@@ -21,7 +21,7 @@ function saveBookmark(e)
 	console.log(localStorage.getItem('test'));
 
 	*/
-	if(localStorage.getItem('bookmarks') == null)
+	if(localStorage.getItem('bookmarks') === null)
 	{
 		var bookmarks = [];
 
@@ -40,4 +40,13 @@ function saveBookmark(e)
 
 	}
 	e.preventDefault();
+}
+
+function fetchBookmarks()
+{
+	var bookmarks = JSON.parse(localStorage.getItem('bookmarks'));
+
+	var BookmarkResult = document.getElementById('BookmarkResult');
+
+	BookmarkResult.innerHTML='Hello world';
 }
