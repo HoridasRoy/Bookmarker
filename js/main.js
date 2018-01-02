@@ -8,6 +8,11 @@ function saveBookmark(e)
 	var SiteName = document.getElementById('SiteName').value;
 	var SiteUrl = document.getElementById('SiteUrl').value;
 
+	if(validateForm(SiteName,SiteUrl))
+	{
+		return false;
+	}
+
 	var Bookmark ={
 
 		name: SiteName,
@@ -39,6 +44,8 @@ function saveBookmark(e)
 		localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
 
 	}
+
+	document.getElementById('myform').reset();
 
 	fetchBookmarks();
 	e.preventDefault();
@@ -81,4 +88,25 @@ function fetchBookmarks()
 																'</h3>' +
 																'</div>';
 	}
+}
+
+
+function validateForm(SiteName,SiteUrl)
+{
+
+		if(!SiteName || SiteUrl)
+		{
+
+			alert('please fill up the form');
+			return false;
+		}
+
+
+		if(!SiteUrl.match(regex))
+		{
+			alert('please enter a valid url');
+			return false;
+		}
+
+		return true;
 }
